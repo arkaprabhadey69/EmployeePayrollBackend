@@ -13,6 +13,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler
 	public ResponseEntity<Error> handle(Exception ex){
+		ex.printStackTrace();
 		return new ResponseEntity<Error>(new Error("Failed to add",500),HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
