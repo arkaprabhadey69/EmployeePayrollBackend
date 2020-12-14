@@ -12,9 +12,15 @@ import com.autoplant.emp.dto.Error;
 public class GlobalExceptionHandler {
 	
 	@ExceptionHandler
-	public ResponseEntity<Error> handle(Exception ex){
+	public ResponseEntity<Error> handle(EmployeeException ex){
 		ex.printStackTrace();
-		return new ResponseEntity<Error>(new Error("Failed to add",500),HttpStatus.INTERNAL_SERVER_ERROR);
+		if(ex instanceof NotFoundException) {
+			return new ResponseEntity<Error>(new Error(ex.getMessage(),404),HttpStatus.NOT_FOUND);
+		}
+		if(ex instanceof BadException) {
+			return new ResponseEntity<Error>(new Error(ex.getMessage(),400),HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Error>(new Error("Failed",500),HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 

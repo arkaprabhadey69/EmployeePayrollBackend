@@ -1,5 +1,7 @@
 package com.autoplant.emp.dto;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class Error {
 	
 	private String message;
