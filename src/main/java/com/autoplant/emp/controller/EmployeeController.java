@@ -2,10 +2,13 @@ package com.autoplant.emp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import com.autoplant.emp.dto.ResponseDTO;
 import com.autoplant.emp.service.IEmployeeInterface;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class EmployeeController {
 	
 	@Autowired
@@ -33,7 +37,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/insert")
-	public ResponseEntity<ResponseDTO> addEmployee(@RequestBody EmployeePayrollDTO empDTO){
+	public ResponseEntity<ResponseDTO> addEmployee(@Valid @RequestBody EmployeePayrollDTO empDTO){
 		return new ResponseEntity<ResponseDTO>(employeePayrollService.addEmployee(empDTO),HttpStatus.OK);
 	}
 	@GetMapping("/list")

@@ -84,6 +84,7 @@ public EmployeePayrollDTO updateUser(EmployeePayrollDTO employeePayrollDto,int i
 }
 private EmployeePayrollDTO convertobj(EmployeeEntity employee) {
 	EmployeePayrollDTO  emp = new EmployeePayrollDTO ();
+	
 	emp.setName(employee.getName());
 	emp.setDept(employee.getDept());
 	emp.setSalary(employee.getSalary());
