@@ -57,7 +57,7 @@ public List<EmployeePayrollDTO> getEmployeeList() {
 @Override
 public ResponseDTO deleteEmployee(int id) {
 	employeeRepository.deleteById(id);
-	return new ResponseDTO("Employee Deleteed Successfully..!!");
+	return new ResponseDTO("Employee Deleted Successfully..!!");
 }
 @Override
 public EmployeePayrollDTO getEmployee(int id) {
@@ -90,7 +90,7 @@ private EmployeePayrollDTO convertobj(EmployeeEntity employee) {
 	emp.setSalary(employee.getSalary());
 	emp.setGender(employee.getGender());
 	emp.setImgPath(employee.getImgPath());
-	emp.setStartDate("");
+	emp.setStartDate(employee.getStartDate());
 	emp.setNotes(employee.getNotes());
 	return emp;
 }
